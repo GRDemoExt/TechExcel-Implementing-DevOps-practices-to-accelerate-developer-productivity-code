@@ -21,11 +21,8 @@ jobs:
     needs: job1
 
     steps:
-      - name: Cowsays Action
-        uses: actions/checkout@v2
-
       - name: Run Cowsays
-        uses: gr2m/cowsay-action@v1
+        uses: mscoutermarsh/cowsays-action@master
         with:
           text: "Ready for prod--ship it!"
           color: magenta
