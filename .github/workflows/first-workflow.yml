@@ -13,3 +13,16 @@ jobs:
 
       - name: Step 2
         run: echo "Step 2 complete!"
+        
+  job2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cowsays Action
+        uses: actions/checkout@v2
+
+      - name: Run Cowsays
+        uses: peter-evans/cowsay-action@v1
+        with:
+          text: "Ready for prod--ship it!"
+          color: magenta
