@@ -1,7 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\.github",
+    "\\.github\\workflows",
+    "\\Application",
+    "\\Application\\src",
+    "\\Application\\src\\RazorPagesTestSample",
+    "\\Application\\tests",
+    "\\Application\\tests\\RazorPagesTestSample.Tests",
+    "\\InfrastructureAsCode"
   ],
-  "SelectedNode": "\\RazorPagesTestSample.Tests.sln",
   "PreviewInSolutionExplorer": false
 }
