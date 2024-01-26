@@ -2,13 +2,16 @@ name: Deploy Bicep file
 
 on:
   workflow_dispatch:
-  inputs:
-      appenv:
-        description: 'Select Environment dev, test, prod'
-        type: choice
-        required: true
-        default: 'dev'
-        options: ['dev', 'test', 'prod']
+      inputs:
+          appenv:
+            description: 'Select Environment dev, test, prod'
+            type: choice
+            required: true
+            default: 'dev'
+            options: 
+            - dev
+            - test
+            - prod
 
 permissions:
       id-token: write
