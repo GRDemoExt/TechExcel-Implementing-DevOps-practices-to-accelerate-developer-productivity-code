@@ -87,18 +87,20 @@ jobs:
       url: https://iyjaxmoojfquo-dev.azurewebsites.net/
     
     steps:
-    - name: Login to Azure
-      uses: azure/login@v1
-      with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        enable-AzPSSession: true # Enable Azure PowerShell session
+#    - name: Login to Azure
+#      uses: azure/login@v1
+#      with:
+#        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+#        tenant-id: ${{ secrets.TENANT_ID }}
+#        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+#        enable-AzPSSession: true # Enable Azure PowerShell session
 
       - uses: azure/webapps-deploy@v2
         with:
           app-name: 'iyjaxmoojfquo-dev'
           images: $registryName/techboost/dotnetcoreapp:${{github.run_number}}
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_c2c367de818543f7bacfff34342bc488 }}
 
   deploy-to-test:
   
@@ -111,17 +113,18 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Login to Azure
-      uses: azure/login@v1
-      with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        enable-AzPSSession: true # Enable Azure PowerShell session
+#    - name: Login to Azure
+#      uses: azure/login@v1
+#      with:
+#        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+#        tenant-id: ${{ secrets.TENANT_ID }}
+#        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+#        enable-AzPSSession: true # Enable Azure PowerShell session
 
     - uses: azure/webapps-deploy@v2
       with:
         app-name: 'iyjaxmoojfquo-test'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_4028fe2216034bb7b7b41345689e0382 }}
         images: $registryName/techboost/dotnetcoreapp:${{github.run_number}}
 
   deploy-to-prod:
@@ -135,15 +138,16 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Login to Azure
-      uses: azure/login@v1
-      with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        enable-AzPSSession: true # Enable Azure PowerShell session
+#    - name: Login to Azure
+#      uses: azure/login@v1
+#      with:
+#        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+#        tenant-id: ${{ secrets.TENANT_ID }}
+#        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+#        enable-AzPSSession: true # Enable Azure PowerShell session
 
     - uses: azure/webapps-deploy@v2
       with:
         app-name: 'iyjaxmoojfquo-prod'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_bab627761b3f4a1682522ec3711eedd2 }}
         images: $registryName/techboost/dotnetcoreapp:${{github.run_number}}
