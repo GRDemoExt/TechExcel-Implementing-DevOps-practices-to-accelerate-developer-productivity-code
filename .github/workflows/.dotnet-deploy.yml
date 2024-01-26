@@ -97,9 +97,9 @@ jobs:
         enable-AzPSSession: true # Enable Azure PowerShell session
 
     - uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'iyjaxmoojfquo-dev'
-          images: $registryName/techboost/dotnetcoreapp:${{github.run_number}}
+      with:
+        app-name: 'iyjaxmoojfquo-dev'
+        images: $registryName/techboost/dotnetcoreapp:${{github.run_number}}
 
   deploy-to-test:
   
