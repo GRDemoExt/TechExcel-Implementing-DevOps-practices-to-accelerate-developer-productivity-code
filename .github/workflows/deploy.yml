@@ -20,7 +20,7 @@ jobs:
       uses: azure/setup-bicep@v1
 
     - name: Build Bicep file
-      run: bicep build main.bicep
+      run: bicep build InfrastructureAsCode/main.bicep
 
     - name: Deploy Bicep file
       uses: azure/arm-deploy@v1
