@@ -2,6 +2,12 @@ name: Deploy Bicep file
 
 on:
   workflow_dispatch:
+  inputs:
+      environment:
+        description: 'Select Environment dev, test, prod'
+        required: true
+        default: 'dev'
+        options: ['dev', 'test', 'prod']
 
 permissions:
       id-token: write
@@ -34,4 +40,5 @@ jobs:
         resourceGroupName: ${{ secrets.AZURE_RG }} # Use GitHub Secret
         template: ./InfrastructureAsCode/main.bicep
         failOnStdErr: false
+        parameters: environment=${{ github.event.inputs.appenv }}
 
