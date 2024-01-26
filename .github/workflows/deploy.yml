@@ -32,7 +32,7 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }} # Use GitHub Secret
         resourceGroupName: ${{ secrets.AZURE_RG }} # Use GitHub Secret
-        template: ./InfrastructureAsCode/main.json
+        template: ./InfrastructureAsCode/main.bicep
         parameters: 'storagePrefix=mystore storageSKU=Standard_LRS'
         failOnStdErr: false
 
