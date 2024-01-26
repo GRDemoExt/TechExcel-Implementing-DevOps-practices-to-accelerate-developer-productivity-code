@@ -16,17 +16,18 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         enable-AzPSSession: true # Enable Azure PowerShell session
 
-    - name: Install Bicep CLI
-      uses: azure/setup-bicep@v1
-
-    - name: Build Bicep file
-      run: bicep build InfrastructureAsCode/main.bicep
+    - name: Bicep Build
+      uses: Azure/bicep-build-action@v1.0.0
+      with:
+          bicepFilePath: ./InfrastructureAsCode/main.bicep
+          outputFilePath: azuredeploy.json
 
     - name: Deploy Bicep file
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }} # Use GitHub Secret
         resourceGroupName: ${{ secrets.AZURE_RG }} # Use GitHub Secret
-        template: InfrastructureAsCode/main.json
-        parameters: storagePrefix=sample
+        template: ./InfrastructureAsCode/main.json
+        parameters: 'storagePrefix=mystore storageSKU=Standard_LRS'
+        failOnStdErr: false
 
